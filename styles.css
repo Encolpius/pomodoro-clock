@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Marcellus');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Marcellus', serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+  border: 1px solid black;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
+}
+
+/*
+===========================
+Header
+===========================
+*/
+
+.header {
+  padding: 20px;
+  width: 450px;
+  text-align: center;
+}
+
+/*
+===========================
+Clock Face
+===========================
+*/
+
+.clock-face {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock-face h1 {
+  font-size: 70px;
+  padding: 10px;
+}
+
+/*
+===========================
+Dials
+===========================
+*/
+
+.knobs {
+  border-top: 1px solid black;
+  height: 100px;
+  display: flex;
+  flex: 1;
+}
+
+.knobs > div {
+  width: 50%;
+  text-align: center;
+}
+
+.knob-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: 18px;
+  width: 18px;
+}
+
+/*
+===========================
+Typography
+===========================
+*/
+
+h1 {
+  font-size: 70px;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 30px;
+  padding: 8px;
+}
+
+h4 {
+  padding: 9px;
+}
