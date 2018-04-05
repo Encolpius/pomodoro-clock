@@ -14,9 +14,13 @@ body {
   justify-content: center;
   align-content: center;
   font-family: 'Marcellus', serif;
+  background-color: #DFDBE5;
+  background-color: #c7c7c7;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.38' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .wrapper {
+  background-color: white;
   margin: 0 auto;
   border: 1px solid black;
   border-top-right-radius: 12px;
@@ -55,12 +59,17 @@ Clock Face
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+}
+
+.icons img:hover {
+  border: 1px solid #ccc;
 }
 
 .icons img {
   height: 30px;
   width: 30px;
+  border: 1px solid transparent;
+  padding: -2px;
 }
 
 #workOrBreak {
@@ -141,4 +150,16 @@ a {
 #break-minutes,
 #update-work-minutes {
   width: 50px;
+}
+
+/*
+===========================
+Media
+===========================
+*/
+
+@media all and (max-width: 500px) {
+  .wrapper {
+    width: 90%;
+  }
 }
