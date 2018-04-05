@@ -5,7 +5,7 @@ $(document).ready(function() {
   function clock() {
 
     // VARIABLES
-    var minutes = 25;
+    var minutes = 1;
     var updateMinutes = 25;
     var interval = 5
     var breakTime = 5;
@@ -39,7 +39,6 @@ $(document).ready(function() {
     function startBreakTimer(duration, display) {
       var timer = duration -1, minutes, seconds;
       myTimer = setInterval(function() {
-        isPaused = true;
         if (!isPaused) {
           $('#workOrBreak').text('Break');
           $('#time').removeClass('working')
