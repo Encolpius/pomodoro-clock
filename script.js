@@ -5,16 +5,18 @@ $(document).ready(function() {
   function clock() {
 
     // VARIABLES
-    var minutes = 25;
+    var minutes = 1;
+    var updateMinutes = 25;
     var interval = 5
     var breakTime = 5;
+    var on;
 
     function startTimer(duration, display) {
       var timer = duration -2, minutes, seconds;
-      $('#workOrBreak').text('Work');
-      $('#time').removeClass('breakTime')
-      $('#time').addClass('working');
       myTimer = setInterval(function() {
+        $('#workOrBreak').text('Work');
+        $('#time').removeClass('breakTime')
+        $('#time').addClass('working');
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
 
@@ -26,7 +28,7 @@ $(document).ready(function() {
 
         if (--timer < 0) {
           clearInterval(myTimer);
-          duration = 60 * breakTime;
+          duration = 60 * interval;
           startBreakTimer(duration, display);
         }
       }, 1000);
@@ -34,10 +36,10 @@ $(document).ready(function() {
 
     function startBreakTimer(duration, display) {
       var timer = duration -1, minutes, seconds;
-      $('#workOrBreak').text('Break');
-      $('#time').removeClass('working')
-      $('#time').addClass('breakTime');
-      setInterval(function() {
+      myTimer = setInterval(function() {
+        $('#workOrBreak').text('Break');
+        $('#time').removeClass('working')
+        $('#time').addClass('breakTime');
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
 
@@ -49,19 +51,31 @@ $(document).ready(function() {
 
         if (--timer < 0) {
           clearInterval(myTimer);
-          duration = 60 * minutes;
-          startTimer(duration, display)
+          minutes = updateMinutes;
+          duration = 60 * minutes
+          startTimer(duration, display);
         }
       }, 1000);
     }
 
     $('#play').click(function() {
-      $('#time').text(minutes -1 + ':59')
-      var time = 60 * minutes
-      display = $('#time');
-      startTimer(time, display);
-      $('.knobs').fadeTo(700,0);
-    })
+      if (on === true) {
+        $(this) === null;
+      } else {
+        on = true;
+        $('#time').addClass('working');
+        if (minutes <= 10) {
+          $('#time').text('09' + ':59')
+        } else {
+          $('#time').text(minutes -1 + ':59')
+        }
+          var time = 60 * minutes
+          display = $('#time');
+          startTimer(time, display);
+          $('.knobs').fadeTo(700,0);
+
+      };
+    });
 
 
 
@@ -82,6 +96,7 @@ $(document).ready(function() {
         $('#work-up') === null;
       } else {
         minutes += 1;
+        updateMinutes = minutes;
         updateTime(minutes);
       }
     });
@@ -91,6 +106,7 @@ $(document).ready(function() {
         $('#work-down') === null;
       } else {
         minutes -= 1;
+        updateMinutes = minutes;
         updateTime(minutes);
       }
     });
@@ -113,22 +129,28 @@ $(document).ready(function() {
       } else {
         interval -= 1;
         updateBreakTime(interval);
-        console.log(interval)
       }
     });
 
 
     // ICONS
     $('#stop').click(function() {
+      on = false;
+      $('#time').text(minutes + ':00').removeClass('working', 'breakTime');
       clearInterval(myTimer);
       $('.knobs').fadeTo(500, 1000);
     })
 
     $('#reset').click(function() {
+      on = false;
       clearInterval(myTimer);
       $('.knobs').fadeTo(500, 1000);
       $('#update-work-minutes').text('25');
-      $('#time').text('25:00').css('color', 'black');
+      $('#break-minutes').text('5');
+      minutes = 25;
+      interval = 5;
+      breakTime = 5;
+      $('#time').text('25:00').removeClass('working', 'breakTime');
     })
 
   };

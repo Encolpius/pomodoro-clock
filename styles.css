@@ -137,3 +137,8 @@ a {
   margin-left: 9px;
   margin-right: 9px;
 }
+
+#break-minutes,
+#update-work-minutes {
+  width: 50px;
+}
