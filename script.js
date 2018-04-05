@@ -5,31 +5,33 @@ $(document).ready(function() {
   function clock() {
 
     // VARIABLES
-    var minutes = 1;
+    var minutes = 25;
     var updateMinutes = 25;
     var interval = 5
     var breakTime = 5;
     var on;
+    var isPaused = false;
 
     function startTimer(duration, display) {
       var timer = duration -2, minutes, seconds;
       myTimer = setInterval(function() {
-        $('#workOrBreak').text('Work');
-        $('#time').removeClass('breakTime')
-        $('#time').addClass('working');
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        if (!isPaused) {
+          $('#workOrBreak').text('Work');
+          $('#time').removeClass('breakTime')
+          $('#time').addClass('working');
+          minutes = parseInt(timer / 60, 10)
+          seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.text(minutes + ":" + seconds);
+          display.text(minutes + ":" + seconds);
 
-
-        if (--timer < 0) {
-          clearInterval(myTimer);
-          duration = 60 * interval;
-          startBreakTimer(duration, display);
+          if (--timer < 0) {
+            clearInterval(myTimer);
+            duration = 60 * interval;
+            startBreakTimer(duration, display);
+          }
         }
       }, 1000);
     };
@@ -37,28 +39,31 @@ $(document).ready(function() {
     function startBreakTimer(duration, display) {
       var timer = duration -1, minutes, seconds;
       myTimer = setInterval(function() {
-        $('#workOrBreak').text('Break');
-        $('#time').removeClass('working')
-        $('#time').addClass('breakTime');
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        isPaused = true;
+        if (!isPaused) {
+          $('#workOrBreak').text('Break');
+          $('#time').removeClass('working')
+          $('#time').addClass('breakTime');
+          minutes = parseInt(timer / 60, 10)
+          seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.text(minutes + ":" + seconds);
+          display.text(minutes + ":" + seconds);
 
-
-        if (--timer < 0) {
-          clearInterval(myTimer);
-          minutes = updateMinutes;
-          duration = 60 * minutes
-          startTimer(duration, display);
+          if (--timer < 0) {
+            clearInterval(myTimer);
+            minutes = updateMinutes;
+            duration = 60 * minutes
+            startTimer(duration, display);
+          }
         }
       }, 1000);
     }
 
     $('#play').click(function() {
+      isPaused = false;
       if (on === true) {
         $(this) === null;
       } else {
@@ -151,6 +156,11 @@ $(document).ready(function() {
       interval = 5;
       breakTime = 5;
       $('#time').text('25:00').removeClass('working', 'breakTime');
+    })
+
+    $('#pause').click(function(e) {
+      e.preventDefault()
+      isPaused = true;
     })
 
   };
