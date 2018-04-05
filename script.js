@@ -117,6 +117,8 @@ $(document).ready(function() {
       }
     });
 
+
+    // ICONS
     $('#stop').click(function() {
       clearInterval(myTimer);
       $('.knobs').fadeTo(500, 1000);
