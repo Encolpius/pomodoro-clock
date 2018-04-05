@@ -10,10 +10,10 @@ $(document).ready(function() {
     var breakTime = 5;
 
     function startTimer(duration, display) {
+      var timer = duration -2, minutes, seconds;
       $('#workOrBreak').text('Work');
       $('#time').removeClass('breakTime')
       $('#time').addClass('working');
-      var timer = duration -2, minutes, seconds;
       myTimer = setInterval(function() {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
@@ -33,10 +33,10 @@ $(document).ready(function() {
     };
 
     function startBreakTimer(duration, display) {
+      var timer = duration -1, minutes, seconds;
       $('#workOrBreak').text('Break');
       $('#time').removeClass('working')
       $('#time').addClass('breakTime');
-      var timer = duration -1, minutes, seconds;
       setInterval(function() {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
@@ -60,7 +60,7 @@ $(document).ready(function() {
       var time = 60 * minutes
       display = $('#time');
       startTimer(time, display);
-      $('.knobs').fadeTo(1000,0);
+      $('.knobs').fadeTo(700,0);
     })
 
 
@@ -68,8 +68,6 @@ $(document).ready(function() {
     function updateTime() {
       $('#time').text(minutes + ":00");
       $('#update-work-minutes').text(minutes);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
     }
 
     function updateBreakTime() {
@@ -80,26 +78,43 @@ $(document).ready(function() {
 
     // WORKING MINUTES UPDATE
     $('#work-up').click(function() {
-      minutes += 1;
-      updateTime(minutes);
+      if (minutes == 60) {
+        $('#work-up') === null;
+      } else {
+        minutes += 1;
+        updateTime(minutes);
+      }
     });
 
     $('#work-down').click(function() {
-      minutes -= 1;
-      updateTime(minutes);
+      if (minutes == 10) {
+        $('#work-down') === null;
+      } else {
+        minutes -= 1;
+        updateTime(minutes);
+      }
     });
 
 
 
     // BREAK MINUTES UPDATE
     $('#break-up').click(function() {
-      interval += 1;
-      updateBreakTime(interval);
+      if (interval == 20) {
+        $('#break-up') === null;
+      } else {
+        interval += 1;
+        updateBreakTime(interval);
+      }
     });
 
     $('#break-down').click(function() {
-      interval -= 1;
-      updateBreakTime(interval);
+      if (interval == 1) {
+        $('#break-down') === null;
+      } else {
+        interval -= 1;
+        updateBreakTime(interval);
+        console.log(interval)
+      }
     });
 
     $('#stop').click(function() {
