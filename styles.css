@@ -14,9 +14,10 @@ body {
   justify-content: center;
   align-content: center;
   font-family: 'Marcellus', serif;
+  text-align: center;
   background-color: #DFDBE5;
   background-color: #c7c7c7;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.38' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.38' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .wrapper {
@@ -38,15 +39,6 @@ Header
   padding: 20px;
   width: 450px;
   text-align: center;
-  position: relative;
-}
-
-#tomato {
-  position: absolute;
-  top: -45px;
-  left: 185px;
-  height: 60px;
-  width: 85px;
 }
 
 /*
@@ -61,6 +53,13 @@ Clock Face
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.clock-face > div {
+  background-color: #282727;
+  border-radius: 12px;
+  width: 70%;
+  text-align: center;
 }
 
 .icons {
@@ -133,6 +132,7 @@ h1 {
   font-family: 'PT Mono', monospace;
   margin: 0;
   padding: 12px;
+  color: white;
 }
 
 h2 {
@@ -149,6 +149,10 @@ h3 {
 h4 {
   padding: 9px;
   font-weight: 700;
+}
+
+h5 {
+  font-size: 12px;
 }
 
 a {
