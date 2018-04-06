@@ -5,7 +5,7 @@ $(document).ready(function() {
   function clock() {
 
     // VARIABLES
-    var minutes = 25;
+    var minutes = 1;
     var updateMinutes = 25;
     var interval = 5
     var breakTime = 5;
@@ -76,7 +76,7 @@ $(document).ready(function() {
           var time = 60 * minutes
           display = $('#time');
           startTimer(time, display);
-          $('.knobs').fadeTo(700,0);
+          $('.knobs').slideUp('slow');
 
       };
     });
@@ -140,21 +140,24 @@ $(document).ready(function() {
     // ICONS
     $('#stop').click(function() {
       on = false;
-      $('#time').text(minutes + ':00').removeClass('working', 'breakTime');
       clearInterval(myTimer);
-      $('.knobs').fadeTo(500, 1000);
+      $('#time').text(updateMinutes + ':00').removeClass();
+      $('#workOrBreak').text('Work');
+      $('.knobs').slideDown('fast');
     })
 
     $('#reset').click(function() {
       on = false;
       clearInterval(myTimer);
-      $('.knobs').fadeTo(500, 1000);
+      $('.knobs').slideDown('fast');
       $('#update-work-minutes').text('25');
       $('#break-minutes').text('5');
+      $('#workOrBreak').text('Work');
       minutes = 25;
       interval = 5;
       breakTime = 5;
-      $('#time').text('25:00').removeClass('working', 'breakTime');
+      updateMinutes = 25;
+      $('#time').text(minutes + ':00').removeClass();
     })
 
     $('#pause').click(function(e) {

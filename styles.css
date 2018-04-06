@@ -23,9 +23,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   background-color: white;
   margin: 0 auto;
   border: 1px solid black;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-radius: 12px;
   box-shadow: 10px 12px 5px rgba(0,0,0,0.1);
+  background: linear-gradient(to bottom, white, #ccc)
 }
 
 /*
