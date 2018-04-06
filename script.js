@@ -5,7 +5,7 @@ $(document).ready(function() {
   function clock() {
 
     // VARIABLES
-    var minutes = 1;
+    var minutes = 25;
     var updateMinutes = 25;
     var interval = 5
     var breakTime = 5;
